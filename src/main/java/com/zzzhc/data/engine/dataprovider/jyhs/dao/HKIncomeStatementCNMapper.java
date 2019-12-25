@@ -1,0 +1,122 @@
+package com.zzzhc.data.engine.dataprovider.jyhs.dao;
+
+import com.zzzhc.data.engine.dataprovider.jyhs.entitybeet.HKIncomeStatementCN;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
+
+public interface HKIncomeStatementCNMapper {
+    /**
+     *
+     * @mbg.generated 2019-02-26
+     */
+    @Insert({
+        "insert into hk_incomestatementcn (ID, CompanyCode, ",
+        "InfoPublDate, InfoSource, ",
+        "EndDate, PeriodMark, ",
+        "FiscalYear, CompanyNature, ",
+        "Mark, CurrencyUnit, ",
+        "TotOpeRev, OpeRev, ",
+        "NetIntInc, IntInc, ",
+        "IntExpense, NetComInc, ",
+        "ComIncome, ComExpense, ",
+        "NetProSecuInc, NetSubSecuInc, ",
+        "NetTrustInc, PremiEarned, ",
+        "PremiIncome, ReinIncome, ",
+        "Reinsurance, UneaPremRes, ",
+        "OtherOpeRev, SpeItemsOR, ",
+        "AdjItemsOR, TotOpeCost, ",
+        "OpeCost, RefPrem, ",
+        "CompExpense, AmorExpense, ",
+        "PremReserve, AmorPremRes, ",
+        "PolDivPayout, ReinCost, ",
+        "OpeAndAdmExp, AmorReinCost, ",
+        "InsComExpense, OtherOpeCost, ",
+        "OpeaCost, OpeTaxSurcha, ",
+        "OpeExpense, AdmExpense, ",
+        "FinExpense, AssetImpLoss, ",
+        "SpeItemsOP, AdjItemsOP, ",
+        "FairValChaInc, InvInc, ",
+        "InvIncAsso, ExcIncome, ",
+        "OtherItemsEffOP, AdjItemsEffOP, ",
+        "OpeProfit, NonopeIncome, ",
+        "NonCurAsDEarn, NonopeExpense, ",
+        "NonCurAssDLoss, OtherItemsEffTP, ",
+        "AdjItemsEffTP, TotalProfit, ",
+        "IncTaxCost, UncerInvLosses, ",
+        "OtherItemsEffNP, AdjItemsEffNP, ",
+        "NetProfit, NPPCompOwners, ",
+        "MinoProfit, OthItemsEffNPP, ",
+        "AdjItemsEffNPP, OCIAfterTax, ",
+        "OCIATPComOWNR, OCINotInIS, ",
+        "OCIReMearsure, OCIEquitNotInIS, ",
+        "OCIInIS, OCIEquityInIS, ",
+        "OCIFairValue, OCIToMaturityFA, ",
+        "OCICFLoss, OCIFGNCurFSA, ",
+        "OCIOthers, OCIATMinorOwner, ",
+        "AdjItemsEffCI, TotCompoIncome, ",
+        "CIPCompOwners, CIMinoOwners, ",
+        "AdjItemsEffPCI, BasicEPS, ",
+        "DilutedEPS, UpdateTime, ",
+        "JSID, InfoSourceCode, ",
+        "BeginDate, AccountingStandards, ",
+        "Gmark)",
+        "values (#{id,jdbcType=BIGINT}, #{companycode,jdbcType=INTEGER}, ",
+        "#{infopubldate,jdbcType=TIMESTAMP}, #{infosource,jdbcType=VARCHAR}, ",
+        "#{enddate,jdbcType=TIMESTAMP}, #{periodmark,jdbcType=INTEGER}, ",
+        "#{fiscalyear,jdbcType=TIMESTAMP}, #{companynature,jdbcType=INTEGER}, ",
+        "#{mark,jdbcType=INTEGER}, #{currencyunit,jdbcType=INTEGER}, ",
+        "#{totoperev,jdbcType=DECIMAL}, #{operev,jdbcType=DECIMAL}, ",
+        "#{netintinc,jdbcType=DECIMAL}, #{intinc,jdbcType=DECIMAL}, ",
+        "#{intexpense,jdbcType=DECIMAL}, #{netcominc,jdbcType=DECIMAL}, ",
+        "#{comincome,jdbcType=DECIMAL}, #{comexpense,jdbcType=DECIMAL}, ",
+        "#{netprosecuinc,jdbcType=DECIMAL}, #{netsubsecuinc,jdbcType=DECIMAL}, ",
+        "#{nettrustinc,jdbcType=DECIMAL}, #{premiearned,jdbcType=DECIMAL}, ",
+        "#{premiincome,jdbcType=DECIMAL}, #{reinincome,jdbcType=DECIMAL}, ",
+        "#{reinsurance,jdbcType=DECIMAL}, #{uneapremres,jdbcType=DECIMAL}, ",
+        "#{otheroperev,jdbcType=DECIMAL}, #{speitemsor,jdbcType=DECIMAL}, ",
+        "#{adjitemsor,jdbcType=DECIMAL}, #{totopecost,jdbcType=DECIMAL}, ",
+        "#{opecost,jdbcType=DECIMAL}, #{refprem,jdbcType=DECIMAL}, ",
+        "#{compexpense,jdbcType=DECIMAL}, #{amorexpense,jdbcType=DECIMAL}, ",
+        "#{premreserve,jdbcType=DECIMAL}, #{amorpremres,jdbcType=DECIMAL}, ",
+        "#{poldivpayout,jdbcType=DECIMAL}, #{reincost,jdbcType=DECIMAL}, ",
+        "#{opeandadmexp,jdbcType=DECIMAL}, #{amorreincost,jdbcType=DECIMAL}, ",
+        "#{inscomexpense,jdbcType=DECIMAL}, #{otheropecost,jdbcType=DECIMAL}, ",
+        "#{opeacost,jdbcType=DECIMAL}, #{opetaxsurcha,jdbcType=DECIMAL}, ",
+        "#{opeexpense,jdbcType=DECIMAL}, #{admexpense,jdbcType=DECIMAL}, ",
+        "#{finexpense,jdbcType=DECIMAL}, #{assetimploss,jdbcType=DECIMAL}, ",
+        "#{speitemsop,jdbcType=DECIMAL}, #{adjitemsop,jdbcType=DECIMAL}, ",
+        "#{fairvalchainc,jdbcType=DECIMAL}, #{invinc,jdbcType=DECIMAL}, ",
+        "#{invincasso,jdbcType=DECIMAL}, #{excincome,jdbcType=DECIMAL}, ",
+        "#{otheritemseffop,jdbcType=DECIMAL}, #{adjitemseffop,jdbcType=DECIMAL}, ",
+        "#{opeprofit,jdbcType=DECIMAL}, #{nonopeincome,jdbcType=DECIMAL}, ",
+        "#{noncurasdearn,jdbcType=DECIMAL}, #{nonopeexpense,jdbcType=DECIMAL}, ",
+        "#{noncurassdloss,jdbcType=DECIMAL}, #{otheritemsefftp,jdbcType=DECIMAL}, ",
+        "#{adjitemsefftp,jdbcType=DECIMAL}, #{totalprofit,jdbcType=DECIMAL}, ",
+        "#{inctaxcost,jdbcType=DECIMAL}, #{uncerinvlosses,jdbcType=DECIMAL}, ",
+        "#{otheritemseffnp,jdbcType=DECIMAL}, #{adjitemseffnp,jdbcType=DECIMAL}, ",
+        "#{netprofit,jdbcType=DECIMAL}, #{nppcompowners,jdbcType=DECIMAL}, ",
+        "#{minoprofit,jdbcType=DECIMAL}, #{othitemseffnpp,jdbcType=DECIMAL}, ",
+        "#{adjitemseffnpp,jdbcType=DECIMAL}, #{ociaftertax,jdbcType=DECIMAL}, ",
+        "#{ociatpcomownr,jdbcType=DECIMAL}, #{ocinotinis,jdbcType=DECIMAL}, ",
+        "#{ociremearsure,jdbcType=DECIMAL}, #{ociequitnotinis,jdbcType=DECIMAL}, ",
+        "#{ociinis,jdbcType=DECIMAL}, #{ociequityinis,jdbcType=DECIMAL}, ",
+        "#{ocifairvalue,jdbcType=DECIMAL}, #{ocitomaturityfa,jdbcType=DECIMAL}, ",
+        "#{ocicfloss,jdbcType=DECIMAL}, #{ocifgncurfsa,jdbcType=DECIMAL}, ",
+        "#{ociothers,jdbcType=DECIMAL}, #{ociatminorowner,jdbcType=DECIMAL}, ",
+        "#{adjitemseffci,jdbcType=DECIMAL}, #{totcompoincome,jdbcType=DECIMAL}, ",
+        "#{cipcompowners,jdbcType=DECIMAL}, #{ciminoowners,jdbcType=DECIMAL}, ",
+        "#{adjitemseffpci,jdbcType=DECIMAL}, #{basiceps,jdbcType=DECIMAL}, ",
+        "#{dilutedeps,jdbcType=DECIMAL}, #{updatetime,jdbcType=TIMESTAMP}, ",
+        "#{jsid,jdbcType=BIGINT}, #{infosourcecode,jdbcType=INTEGER}, ",
+        "#{begindate,jdbcType=TIMESTAMP}, #{accountingstandards,jdbcType=INTEGER}, ",
+        "#{gmark,jdbcType=INTEGER})"
+    })
+    int insert(HKIncomeStatementCN record);
+
+    /**
+     *
+     * @mbg.generated 2019-02-26
+     */
+    @InsertProvider(type=HKIncomeStatementCNSqlProvider.class, method="insertSelective")
+    int insertSelective(HKIncomeStatementCN record);
+}

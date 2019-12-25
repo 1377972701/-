@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="testTables" targetRuntime="MyBatis3">
+		<commentGenerator type="MyCommentGenerator">
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<!-- <property name="suppressAllComments" value="true" /> -->
+		</commentGenerator>
+		
+		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.9.240:3306/jydb"
+			userId="root"
+			password="root@credit2017">
+		</jdbcConnection>
+		<!-- <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:yycg" 
+			userId="yycg"
+			password="yycg">
+		</jdbcConnection> -->
+
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- targetProject:生成pojo类的位置 -->
+		<javaModelGenerator targetPackage="com.zzzhc.data.engine.dataprovider.jyhs.entitybeet"
+			targetProject=".\src\main\java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+			<!--<property name="rootClass" value="com.xhx.syncdata.common.BaseEntity" />-->
+		</javaModelGenerator>
+		
+
+		
+        <!-- targetProject:mapper映射文件生成的位置 -->
+ 		<sqlMapGenerator targetPackage="com.zzzhc.data.engine.dataprovider.jyhs.mapper"
+			targetProject=".\src\main\java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		
+		<!-- targetProject:生成空service类的位置 -->
+<!--  		<javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.xhx.syncdata.service"
+			targetProject=".\src">
+			<property name="enableSubPackages" value="false" />
+			<property name="rootClass" value="com.xhx.syncdata.service.ExecuateService" />
+		</javaClientGenerator> -->
+		
+		<!-- targetPackage：mapper接口生成的位置 type:ANNOTATEDMAPPER/XMLMAPPER 两种不同策略 -->
+  		<javaClientGenerator type="ANNOTATEDMAPPER"
+			targetPackage="com.zzzhc.data.engine.dataprovider.jyhs.dao"
+			targetProject=".\src\main\java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!--<property name="rootClass" value="com.zzzhc.data.engine.dataprovider.jyhs.service.ExecuateService" />-->
+		</javaClientGenerator>
+		<!-- <table tableName="server_hosting">
+		 
+		<columnRenamingRule searchString="^[^_]+" replaceString=""/>
+		 
+		</table> -->
+		 
+		<!-- searchString="^[^_]+",这个查找字符串就是使用正则表达式来匹配表的字段名
+		 
+		这个意思就是匹配，开头的任意个非下划线(_)的字符，也就是这种如：c_，abc_。。。等等
+		 
+		逆向工程生成数据库中所有表： -->
+		 
+<!--		<table schema="" tableName="%"
+		    enableCountByExample="false"
+			enableDeleteByExample="false"
+			enableSelectByExample="false"
+			enableUpdateByExample="false">
+			</table>-->
+<!-- 		<table schema="" tableName="%"
+			enableCountByExample="false"
+			enableDeleteByExample="false"
+			enableSelectByExample="false"
+			enableUpdateByExample="false">
+			<columnRenamingRule searchString="^[^_]+" replaceString=""/>
+		</table> -->
+		<!-- 指定数据库表 -->
+ 		<!--<table schema="" tableName="LC_Staff" domainObjectName="LCStaff"
+    		enableCountByExample="false" enableUpdateByExample="false"
+    		enableDeleteByExample="false" enableSelectByExample="false"
+    		selectByExampleQueryId="false" >
+    		<property name="useActualColumnNames" value="false"/>
+		</table>-->
+		<table schema="" tableName="HK_BalanceSheetCN" domainObjectName="HKBalanceSheetCN"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="HK_CashFlowStatementCN" domainObjectName="HKCashFlowStatementCN"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="HK_IncomeStatementCN" domainObjectName="HKIncomeStatementCN"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+	<!--	<table schema="" tableName="NQ_Staff" domainObjectName="NQStaff"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="HK_EmployeeChange" domainObjectName="HKEmployeeChange"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="SecuMain" domainObjectName="SecuMain"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="NQ_SecuMain" domainObjectName="NQSecuMain"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="HK_SecuMain" domainObjectName="HKSecuMain"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_StockArchives" domainObjectName="LC_StockArchives"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="NQ_ComArchives" domainObjectName="NQComArchives"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="HK_StockArchives" domainObjectName="HKStockArchives"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="Bond_Code" domainObjectName="BondCode"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="Bond_BasicInfo" domainObjectName="BondBasicInfo"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_MainSHListNew" domainObjectName="LCMainSHListNew"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="NQ_Top10SH" domainObjectName="NQTop10SH"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="HK_SHEquity" domainObjectName="HKSHEquity"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="HK_SHDirectorEquity" domainObjectName="HKSHDirectorEquity"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_ShareFP" domainObjectName="LCShareFP"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_LeaderPosition" domainObjectName="LCLeaderPosition"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="HK_LeaderPosition" domainObjectName="HKLeaderPosition"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="NQ_LeaderPOSN" domainObjectName="NQLeaderPOSN"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_LeaderIntroduce" domainObjectName="LCLeaderIntroduce"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="HK_LeaderIntroduce" domainObjectName="HKLeaderIntroduce"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_Warrant" domainObjectName="LCWarrant"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_SuitArbitration" domainObjectName="LCSuitArbitration"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_NotTextAnnouncement" domainObjectName="LCNotTextAnnouncement"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="NQ_Announcement" domainObjectName="NQAnnouncement"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="HK_Announcement" domainObjectName="HKAnnouncement"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_BalanceSheetAll" domainObjectName="LCBalanceSheetAll"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_IncomeStatementAll" domainObjectName="LCIncomeStatementAll"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+		<table schema="" tableName="LC_CashFlowStatementAll" domainObjectName="LCCashFlowStatementAll"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false"/>
+		</table>-->
+	   
+		<!-- 有些表的字段需要指定java类型
+		 <table schema="" tableName="">
+			<columnOverride column="" javaType="" />
+		</table> -->
+	</context>
+</generatorConfiguration>
